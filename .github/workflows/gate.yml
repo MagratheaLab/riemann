@@ -1,0 +1,39 @@
+# Same checks as rc gate --ci: delivery files, allowed_files, sorry/header, lake.
+name: gate
+
+on:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install rc
+        run: pip install "rc-cli @ git+https://github.com/MagratheaLab/rc.git"
+      - name: build gate image
+        run: |
+          git clone --depth 1 https://github.com/MagratheaLab/rc.git /tmp/rc
+          docker build -t magrathea-gate:lean-4.33.0 /tmp/rc/gate
+          ID=$(docker inspect --format='{{.Id}}' magrathea-gate:lean-4.33.0)
+          echo "RC_GATE_IMAGE=magrathea-gate:lean-4.33.0@${ID}" >> "$GITHUB_ENV"
+      - name: rc gate
+        env:
+          RC_WORLD: ${{ github.workspace }}
+          RC_REPO: ${{ github.repository }}
+        run: |
+          set -e
+          PACKET=""
+          if [ -f CERTIFICATE.json ]; then
+            PACKET=$(python3 -c "import json; print(json.load(open('CERTIFICATE.json'))['packet'])")
+          elif [[ "${GITHUB_HEAD_REF}" == packet/* ]]; then
+            PACKET="${GITHUB_HEAD_REF#packet/}"
+          fi
+          if [ -z "$PACKET" ]; then
+            echo "no packet id (need CERTIFICATE.json or branch packet/P-...)"
+            exit 1
+          fi
+          rc gate --ci "$PACKET"
