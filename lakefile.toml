@@ -1,0 +1,5 @@
+name = "riemann"
+defaultTargets = ["RiemannCanon"]
+
+[[lean_lib]]
+name = "RiemannCanon"
