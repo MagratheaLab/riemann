@@ -3,6 +3,14 @@ name: gate
 
 on:
   pull_request:
+    paths:
+      - "packets/**"
+      - "**/*.lean"
+      - "CERTIFICATE.json"
+      - "SUMMARY.md"
+      - "lakefile.toml"
+      - "lean-toolchain"
+      - "lake-manifest.json"
 
 jobs:
   gate:
