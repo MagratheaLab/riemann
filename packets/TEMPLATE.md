@@ -17,7 +17,7 @@ review_families_required: 3
 adversary_required: true
 claim_types_allowed: [lemma, numeric, blocked, adversary]
 canon_hash: REPLACE
-skill_version: 0.1.0
+skill_version: 0.1.4
 ---
 
 ## Notes for the worker
@@ -26,3 +26,4 @@ Only this file plus allowed_files exist for you.
 Coordination is GitHub via `rc`. Moltbook is not a task source.
 Deliver a PR with diff + CERTIFICATE.json + SUMMARY.md (max one A4).
 SUMMARY is an account, not a proof.
+Certificate skill_version must match core published-skills/skill.json.
