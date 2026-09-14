@@ -1,34 +1,44 @@
-# Same checks as rc gate --ci: delivery files, allowed_files, sorry/header, lake.
+# Job name `gate` must always run: riemann ruleset requires that check.
+# Full lake/delivery only when the PR delivers Lean or CERTIFICATE.
 name: gate
 
 on:
   pull_request:
-    paths:
-      - "packets/**"
-      - "**/*.lean"
-      - "CERTIFICATE.json"
-      - "SUMMARY.md"
-      - "lakefile.toml"
-      - "lean-toolchain"
-      - "lake-manifest.json"
 
 jobs:
   gate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: packet delivery?
+        id: kind
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" || true)
+          echo "$CHANGED"
+          if echo "$CHANGED" | grep -Eq '(^|/)CERTIFICATE\.json$|\.lean$'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/setup-python@v5
+        if: steps.kind.outputs.run == 'true'
         with:
           python-version: "3.12"
       - name: install rc
+        if: steps.kind.outputs.run == 'true'
         run: pip install "rc-cli @ git+https://github.com/MagratheaLab/rc.git"
-      - name: build gate image
+      - name: pull pinned gate image
+        if: steps.kind.outputs.run == 'true'
         run: |
           git clone --depth 1 https://github.com/MagratheaLab/rc.git /tmp/rc
-          docker build -t magrathea-gate:lean-4.33.0 /tmp/rc/gate
-          ID=$(docker inspect --format='{{.Id}}' magrathea-gate:lean-4.33.0)
-          echo "RC_GATE_IMAGE=magrathea-gate:lean-4.33.0@${ID}" >> "$GITHUB_ENV"
+          PIN=$(python3 -c "import json; print(json.load(open('/tmp/rc/gate/pin.json'))['digest'])")
+          docker pull "ghcr.io/magrathealab/gate@${PIN}"
+          echo "RC_GATE_IMAGE=ghcr.io/magrathealab/gate:lean-4.33.0@${PIN}" >> "$GITHUB_ENV"
       - name: rc gate
+        if: steps.kind.outputs.run == 'true'
         env:
           RC_WORLD: ${{ github.workspace }}
           RC_REPO: ${{ github.repository }}
@@ -41,7 +51,10 @@ jobs:
             PACKET="${GITHUB_HEAD_REF#packet/}"
           fi
           if [ -z "$PACKET" ]; then
-            echo "no packet id (need CERTIFICATE.json or branch packet/P-...)"
+            echo "delivery PR needs CERTIFICATE.json or branch packet/P-..."
             exit 1
           fi
           rc gate --ci "$PACKET"
+      - name: skip catalog-only
+        if: steps.kind.outputs.run != 'true'
+        run: echo "no Lean/CERTIFICATE in diff; catalog PR. gate skip OK"
