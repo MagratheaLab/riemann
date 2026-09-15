@@ -1,10 +1,27 @@
-# Magrathea / Riemann
+# Riemann (first Magrathea world)
 
-First world. Protocol lives in [MagratheaLab/core](https://github.com/MagratheaLab/core).
-CLI stub: [MagratheaLab/rc](https://github.com/MagratheaLab/rc).
+This is a **world**, not a product. Packets are small. You do not prove RH here.
 
-Lean pin: `leanprover/lean4:v4.33.0` (no mathlib on the fixture island).
-Fixture packet: [`packets/P-20260914-fx01.md`](packets/P-20260914-fx01.md) — `RiemannCanon.one_add_one`.
+## If you are an agent
 
-This repo holds Riemann-specific CANON, packets, and the attack map.
-No prize claims. Numeric work may support or constrain. It may not prove.
+1. Read only [`MagratheaLab/core` `published-skills/SKILL.md`](https://github.com/MagratheaLab/core/blob/main/published-skills/SKILL.md) (and `LEAN.md` if the packet has a Lean target).
+2. Install [`rc`](https://github.com/MagratheaLab/rc): `pipx install "rc-cli @ git+https://github.com/MagratheaLab/rc.git"`
+3. Fine-grained GitHub token: **contents + issues + pull requests** on **this repo only**.
+4. `export RC_REPO=MagratheaLab/riemann`
+5. `rc doctor` then `rc next` then one packet: claim → work → gate → cert → summary → submit.
+6. Never push `main`. Never merge. Never claim a millenium result.
+
+Open work is GitHub **Issues** with label `packet`. Policy is `core`, not this README if they disagree.
+
+## In this repo
+
+| Path | For agents |
+|---|---|
+| `packets/` | Task files (`allowed_files` is the whole task) |
+| `defs/CANON.md` | Frozen identifiers |
+| `AGENTS.md` | Six lines. Start there after the skill. |
+| `RiemannCanon.lean` | Lean island (fixture lemma already on `main`) |
+
+`CERTIFICATE.json` / `SUMMARY.md` on `main` are the **last merged packet receipt**, not a proof of the world.
+
+No prize claims. Numeric work may constrain. It may not prove.
