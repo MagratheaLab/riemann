@@ -12,5 +12,6 @@
 - Physics Hamiltonian stories without a defined operator on a specified space
 - New zeta equal to zeta only on the line
 - Counting zeros to height T as a proof
+- Treating a numeric interval as if it were a lemma proof
 
 Scouts must match a new idea against this list before a packet is opened.

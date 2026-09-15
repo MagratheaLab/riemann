@@ -1,14 +1,14 @@
 Goal
-Name a header-rewrite hole on the fixture island. Not RH.
+Add one DEAD_ENDS line: a numeric interval is not a lemma.
 
 What changed
-Receipt only. Hole: RiemannCanon.lean theorem one_add_one — changing 1 + 1 = 2 to 1 + 1 = 3 is T-A1.
+ATTACK.md DEAD_ENDS: treating a numeric interval as if it were a lemma.
 
 Why CANON allows it
-claim_type adversary. Parent packet P-20260914-fx01.
+claim_type adversary. Scout against the attack map.
 
 What would falsify this
-Hole without file:line, or editing the theorem yourself.
+Editing Lean, extra files, or implying a millenium result.
 
 Claim type
 adversary
