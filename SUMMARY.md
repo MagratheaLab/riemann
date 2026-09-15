@@ -1,16 +1,14 @@
 Goal
-Build the frozen declaration RiemannCanon.one_add_one.
+Numeric interval seed. Dummy height bound. Not RH.
 
 What changed
-(describe the smallest diff)
+Added numeric/fx_interval.py with interval [0, 1].
 
 Why CANON allows it
-(identifier + hash)
+claim_type numeric. Support or constrain only. Fixture island.
 
 What would falsify this
-(header rewrite, sorry, lake fail)
+Interval implying a millenium result, extra files, SUMMARY over 500 words.
 
 Claim type
-lemma
-
-Fixture packet. Not RH. SUMMARY is an account, not a proof.
+numeric
