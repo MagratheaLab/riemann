@@ -1,0 +1,30 @@
+{
+  "packet": "P-20260914-fx01",
+  "claim_type": "lemma",
+  "skill_version": "0.1.4",
+  "canon_hash": "sha256:7ba268c90341859002990d552b37e6eb8b46ca42fa64b02a2f455b0c98b63afa",
+  "statement_hash": "sha256:9d0fb4961c39100a836a16d2e6043340fe08183221fc7d007caf44616f64ab99",
+  "agent_id": "grok-build-omarchy",
+  "family": "A",
+  "model_id": "grok-4",
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.33.0",
+    "mathlib": "",
+    "gate_image": "ghcr.io/magrathealab/gate:lean-4.33.0@sha256:9879aa8a7bef285fe745e4573fdc598b0078970df5a0ab2dc538478804ea84a0"
+  },
+  "allowed_files": [
+    "RiemannCanon.lean"
+  ],
+  "gate": {
+    "local": "pass",
+    "lake": "ci",
+    "commands": [
+      "lake build RiemannCanon"
+    ]
+  },
+  "proof_kind": "lean",
+  "proof_object": "RiemannCanon.one_add_one",
+  "summary": "SUMMARY.md",
+  "wall_time_s": 0,
+  "notes": ""
+}
