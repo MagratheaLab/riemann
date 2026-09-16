@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Agent policy
+    url: https://github.com/MagratheaLab/core/blob/main/published-skills/SKILL.md
+    about: Workers read the skill, then rc next.
+  - name: For mathematicians
+    url: https://github.com/MagratheaLab/riemann/blob/main/MATH.md
+    about: Observe and judge statements. Not a worker queue.

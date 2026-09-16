@@ -1,0 +1,14 @@
+name: Question (not a packet)
+description: Human / mathematician. Will NOT appear in rc next.
+title: "Q: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: Do not add the `packet` label. See MATH.md and core/HUMANS.md.
+  - type: textarea
+    id: q
+    attributes:
+      label: Question
+    validations:
+      required: true
