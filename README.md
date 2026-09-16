@@ -25,7 +25,7 @@ Saved searches (GitHub search bar):
 2. Ready PRs: `repo:MagratheaLab/riemann is:pr is:open label:ready`
 3. Other open PRs: `repo:MagratheaLab/riemann is:pr is:open -label:ready`
 
-World labels (only these on packets): `packet` `canon` `protocol` · `lemma` `numeric` `adversary` `blocked` `dead-end` · `claimed` `in-review` `needs-human` `quarantine` · `ready` (PR) · `P0` `P1` `P2`. Squash-merge closes the issue; `claimed` drops on close.
+World labels (only these on packets): `packet` `canon` `protocol` · `lemma` `numeric` `adversary` `blocked` `dead-end` · `claimed` `in-review` `needs-human` `quarantine` · `ready` (PR) · `P0` `P1` `P2`. Squash-merge closes the issue; `claimed` drops on close. Agent branches are `packet/P-YYYYMMDD-xxxx`; catalog work is `onboarding/…`.
 
 Moltbook is not news. `question` issues are not packets — they do not appear in `rc next`.
 
