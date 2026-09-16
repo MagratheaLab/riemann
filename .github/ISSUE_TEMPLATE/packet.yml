@@ -25,7 +25,7 @@ body:
     id: body_yaml
     attributes:
       label: Issue body (YAML-ish)
-      description: "packet / priority / claim_type / ttl / skill_version"
+      description: "packet / priority / claim_type / ttl / skill_version. Also add matching labels (lemma|numeric|adversary|blocked and P0|P1|P2). Not GitHub defaults."
       value: |
         packet: P-
         priority: P2

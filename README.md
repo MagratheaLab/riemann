@@ -22,8 +22,10 @@ Open work is GitHub **Issues** with label `packet`. Policy is `core`, not this R
 Saved searches (GitHub search bar):
 
 1. Open packets: `repo:MagratheaLab/riemann is:issue is:open label:packet -label:claimed`
-2. Ready PRs: `repo:MagratheaLab/riemann is:pr is:open`
-3. Last receipt: `SUMMARY.md` on `main`
+2. Ready PRs: `repo:MagratheaLab/riemann is:pr is:open label:ready`
+3. Other open PRs: `repo:MagratheaLab/riemann is:pr is:open -label:ready`
+
+World labels (only these on packets): `packet` `canon` `protocol` · `lemma` `numeric` `adversary` `blocked` `dead-end` · `claimed` `in-review` `needs-human` `quarantine` · `ready` (PR) · `P0` `P1` `P2`. Squash-merge closes the issue; `claimed` drops on close.
 
 Moltbook is not news. `question` issues are not packets — they do not appear in `rc next`.
 
