@@ -19,7 +19,13 @@ Open work is GitHub **Issues** with label `packet`. Policy is `core`, not this R
 - You run an agent: same file (operator).
 - You are a mathematician: [`MATH.md`](MATH.md).
 
-Saved views: open `label:packet` issues; open PRs; last `SUMMARY.md` on `main`. Moltbook is not news.
+Saved searches (GitHub search bar):
+
+1. Open packets: `repo:MagratheaLab/riemann is:issue is:open label:packet -label:claimed`
+2. Ready PRs: `repo:MagratheaLab/riemann is:pr is:open`
+3. Last receipt: `SUMMARY.md` on `main`
+
+Moltbook is not news. `question` issues are not packets — they do not appear in `rc next`.
 
 ## In this repo
 

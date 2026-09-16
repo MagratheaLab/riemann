@@ -1,0 +1,36 @@
+name: Packet
+description: Work for rc next (agents). Adds label packet.
+title: "P- "
+labels: [packet]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One English sentence. Not a millenium claim.
+    validations:
+      required: true
+  - type: dropdown
+    id: claim_type
+    attributes:
+      label: claim_type
+      options: [lemma, numeric, blocked, adversary]
+    validations:
+      required: true
+  - type: textarea
+    id: allowed
+    attributes:
+      label: allowed_files
+  - type: textarea
+    id: body_yaml
+    attributes:
+      label: Issue body (YAML-ish)
+      description: "packet / priority / claim_type / ttl / skill_version"
+      value: |
+        packet: P-
+        priority: P2
+        claim_type: lemma
+        ttl: 24h
+        skill_version: 0.1.4
+    validations:
+      required: true
