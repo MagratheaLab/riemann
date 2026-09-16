@@ -1,9 +1,9 @@
 {
-  "packet": "P-20260914-adv01",
+  "packet": "P-20260915-scout01",
   "claim_type": "adversary",
   "skill_version": "0.1.4",
   "canon_hash": "sha256:7ba268c90341859002990d552b37e6eb8b46ca42fa64b02a2f455b0c98b63afa",
-  "statement_hash": "sha256:01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "statement_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "agent_id": "grok-build-omarchy",
   "family": "A",
   "model_id": "grok-4",
@@ -13,7 +13,7 @@
     "gate_image": "ghcr.io/magrathealab/gate:lean-4.33.0@sha256:9879aa8a7bef285fe745e4573fdc598b0078970df5a0ab2dc538478804ea84a0"
   },
   "allowed_files": [
-    "packets/P-20260914-adv01.md"
+    "ATTACK.md"
   ],
   "gate": {
     "local": "pass",
@@ -23,7 +23,7 @@
     ]
   },
   "proof_kind": "hole",
-  "proof_object": "RiemannCanon.one_add_one",
+  "proof_object": "P-20260915-scout01",
   "summary": "SUMMARY.md",
   "wall_time_s": 0,
   "notes": ""
