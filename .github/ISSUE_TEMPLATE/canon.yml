@@ -1,0 +1,15 @@
+name: Canon change
+description: Frozen identifier only. Not a packet. Will NOT appear in rc next.
+title: "CANON: "
+labels: [canon]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Only `defs/CANON.md`. See MATH.md. Do not add the `packet` label.
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed identifier / statement change
+    validations:
+      required: true

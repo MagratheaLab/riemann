@@ -12,6 +12,18 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+      - name: branch contract
+        run: |
+          REF="${GITHUB_HEAD_REF}"
+          echo "head=$REF"
+          if echo "$REF" | grep -Eq '^packet/P-[0-9]{8}-[a-z0-9]+$'; then
+            echo "packet branch OK"
+          elif echo "$REF" | grep -Eq '^onboarding/[A-Za-z0-9._/-]+$'; then
+            echo "onboarding catalog OK"
+          else
+            echo "branch must be packet/P-YYYYMMDD-xxxx or onboarding/..."
+            exit 1
+          fi
       - name: packet delivery?
         id: kind
         run: |
