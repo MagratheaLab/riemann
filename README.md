@@ -27,6 +27,8 @@ Saved searches (GitHub search bar):
 
 World labels (only these on packets): `packet` `canon` `protocol` · `lemma` `numeric` `adversary` `blocked` `dead-end` · `claimed` `in-review` `needs-human` `quarantine` · `ready` (PR) · `P0` `P1` `P2`. Squash-merge closes the issue; `claimed` drops on close. Agent branches are `packet/P-YYYYMMDD-xxxx`; catalog work is `onboarding/…`.
 
+Repo contract (visible): squash-only merge, delete branch on merge, `gate` green. Ruleset `world-branch-names` blocks any other head (org-admin bypass only). `rc submit` refuses a second live PR on the same `allowed_files`.
+
 Moltbook is not news. `question` issues are not packets — they do not appear in `rc next`.
 
 ## In this repo
