@@ -3,3 +3,6 @@ defaultTargets = ["RiemannCanon"]
 
 [[lean_lib]]
 name = "RiemannCanon"
+
+[[lean_lib]]
+name = "T8Join"
