@@ -1,5 +1,7 @@
 # Job name `gate` must always run: riemann ruleset requires that check.
-# Full lake/delivery only when the PR delivers Lean or CERTIFICATE.
+# Delivery = CERTIFICATE.json in THIS PR's diff → rc gate --ci
+# Catalog island = new .lean, no cert in the diff → lake build only
+# (do not use CERTIFICATE.json leftover on main)
 name: gate
 
 on:
@@ -24,49 +26,58 @@ jobs:
             echo "branch must be packet/P-YYYYMMDD-xxxx or onboarding/..."
             exit 1
           fi
-      - name: packet delivery?
+      - name: kind
         id: kind
         run: |
           git fetch origin "${{ github.base_ref }}" --depth=1
           CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" || true)
           echo "$CHANGED"
-          if echo "$CHANGED" | grep -Eq '(^|/)CERTIFICATE\.json$|\.lean$'; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
+          if echo "$CHANGED" | grep -Eq '(^|/)CERTIFICATE\.json$'; then
+            echo "mode=delivery" >> "$GITHUB_OUTPUT"
+          elif echo "$CHANGED" | grep -Eq '\.lean$'; then
+            echo "mode=catalog" >> "$GITHUB_OUTPUT"
           else
-            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "mode=skip" >> "$GITHUB_OUTPUT"
           fi
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
-        if: steps.kind.outputs.run == 'true'
+        if: steps.kind.outputs.mode == 'delivery'
         with:
           python-version: "3.12"
       - name: install rc
-        if: steps.kind.outputs.run == 'true'
+        if: steps.kind.outputs.mode == 'delivery'
         run: pip install "rc-cli @ git+https://github.com/MagratheaLab/rc.git"
       - name: pull pinned gate image
-        if: steps.kind.outputs.run == 'true'
+        if: steps.kind.outputs.mode == 'delivery' || steps.kind.outputs.mode == 'catalog'
         run: |
           git clone --depth 1 https://github.com/MagratheaLab/rc.git /tmp/rc
           PIN=$(python3 -c "import json; print(json.load(open('/tmp/rc/gate/pin.json'))['digest'])")
           docker pull "ghcr.io/magrathealab/gate@${PIN}"
           echo "RC_GATE_IMAGE=ghcr.io/magrathealab/gate:lean-4.33.0@${PIN}" >> "$GITHUB_ENV"
-      - name: rc gate
-        if: steps.kind.outputs.run == 'true'
+          echo "PIN=$PIN" >> "$GITHUB_ENV"
+      - name: rc gate delivery
+        if: steps.kind.outputs.mode == 'delivery'
         env:
           RC_WORLD: ${{ github.workspace }}
           RC_REPO: ${{ github.repository }}
         run: |
           set -e
-          PACKET=""
-          if [ -f CERTIFICATE.json ]; then
-            PACKET=$(python3 -c "import json; print(json.load(open('CERTIFICATE.json'))['packet'])")
-          elif [[ "${GITHUB_HEAD_REF}" == packet/* ]]; then
-            PACKET="${GITHUB_HEAD_REF#packet/}"
-          fi
-          if [ -z "$PACKET" ]; then
-            echo "delivery PR needs CERTIFICATE.json or branch packet/P-..."
-            exit 1
-          fi
+          PACKET=$(python3 -c "import json; print(json.load(open('CERTIFICATE.json'))['packet'])")
           rc gate --ci "$PACKET"
-      - name: skip catalog-only
-        if: steps.kind.outputs.run != 'true'
-        run: echo "no Lean/CERTIFICATE in diff; catalog PR. gate skip OK"
+      - name: catalog lake
+        if: steps.kind.outputs.mode == 'catalog'
+        run: |
+          set -e
+          PACKET="${GITHUB_HEAD_REF#packet/}"
+          TARGET=RiemannCanon
+          if [ -f "packets/${PACKET}.md" ]; then
+            T=$(awk -F': ' '/^lean_declaration:/{print $2; exit}' "packets/${PACKET}.md" | cut -d. -f1)
+            [ -n "$T" ] && TARGET="$T"
+          fi
+          echo "lake build $TARGET (catalog island, not delivery)"
+          docker run --rm --network=none --read-only --tmpfs /tmp:rw,exec \
+            -v "$GITHUB_WORKSPACE:/repo:ro" \
+            "ghcr.io/magrathealab/gate:lean-4.33.0@${PIN}" \
+            bash -c "cp -R --no-preserve=ownership /repo /tmp/src && cd /tmp/src && lake build $TARGET"
+      - name: skip
+        if: steps.kind.outputs.mode == 'skip'
+        run: echo "no Lean/CERTIFICATE in this PR diff; skip OK"
