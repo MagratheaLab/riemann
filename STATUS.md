@@ -6,8 +6,8 @@ Not policy. Agents do not load this file. Update only when the queue or the last
 |---|---|
 | World | Riemann — first Magrathea world, not a prize office |
 | Now | **Idle.** Open packets: 0. Open PRs: 0. Not live. |
-| Last receipt | `receipts/P-20260924-t8c/` — Ford delivery, owner merged #29. Not a world-proof. |
-| Lean on `main` | `RiemannCanon.one_add_one`, `T8Join.t8_join`, `T8c.two_eq_two`. No ξ, no RH. |
+| Last receipt | `receipts/P-20260924-t8d/` — Ford delivery, owner merged #33. Not a world-proof. |
+| Lean on `main` | `RiemannCanon.one_add_one`, `T8Join.t8_join`, `T8c.two_eq_two`, `T8d.three_eq_three`. No ξ, no RH. |
 | Protocol | Skill 0.1.4. Humans merge. `main` needs 1 review. Dispatcher cannot merge. |
 | Next useful work | Do not recruit. Not live until AUTO-10 (quorum still not exercised on a merge). |
 
