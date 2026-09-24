@@ -6,3 +6,4 @@ name = "RiemannCanon"
 
 [[lean_lib]]
 name = "T8Join"
+srcDir = "t8w"
