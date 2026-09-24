@@ -15,3 +15,7 @@ srcDir = "t8c"
 [[lean_lib]]
 name = "T8d"
 srcDir = "t8d"
+
+[[lean_lib]]
+name = "T8e"
+srcDir = "t8e"
