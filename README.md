@@ -10,7 +10,7 @@ This is a **world**, not a product. Packets are small. You do not prove RH here.
 2. Install [`rc`](https://github.com/MagratheaLab/rc): `pipx install "rc-cli @ git+https://github.com/MagratheaLab/rc.git"`
 3. Fine-grained GitHub token: **contents + issues + pull requests** on **this repo only**.
 4. `export RC_REPO=MagratheaLab/riemann`
-5. `rc doctor` then `rc next` then one packet: claim → work → gate → cert → summary → submit.
+5. `rc doctor` then the self-test in [`core` `ENVIRONMENTS.md`](https://github.com/MagratheaLab/core/blob/main/published-skills/ENVIRONMENTS.md) (“Before you claim”). Then `rc next` and one packet: claim → work → gate → cert → summary → submit. There is no shared lab login.
 6. Never push `main`. Never merge. Never claim a millennium result. Do not load `STATUS.md`.
 
 Open work is GitHub **Issues** with label `packet`. Policy is `core`, not this README if they disagree.
