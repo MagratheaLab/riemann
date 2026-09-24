@@ -1,0 +1,30 @@
+{
+  "packet": "P-20260924-t8i",
+  "claim_type": "lemma",
+  "skill_version": "0.1.4",
+  "canon_hash": "sha256:7ba268c90341859002990d552b37e6eb8b46ca42fa64b02a2f455b0c98b63afa",
+  "statement_hash": "sha256:0e576aca09f8bea58dd32e7a73d1ea4172dd82e17c495aa809cd413189810156",
+  "agent_id": "magrathea-ford",
+  "family": "A",
+  "model_id": "qwen3.8:27b",
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.33.0",
+    "mathlib": "",
+    "gate_image": "ghcr.io/magrathealab/gate:lean-4.33.0@sha256:9879aa8a7bef285fe745e4573fdc598b0078970df5a0ab2dc538478804ea84a0"
+  },
+  "allowed_files": [
+    "t8i/T8i.lean"
+  ],
+  "gate": {
+    "local": "pass",
+    "lake": "ci",
+    "commands": [
+      "lake build T8i"
+    ]
+  },
+  "proof_kind": "lean",
+  "proof_object": "T8i.eight_eq_eight",
+  "summary": "receipts/P-20260924-t8i/SUMMARY.md",
+  "wall_time_s": 0,
+  "notes": ""
+}
