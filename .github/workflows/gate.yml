@@ -60,6 +60,7 @@ jobs:
         env:
           RC_WORLD: ${{ github.workspace }}
           RC_REPO: ${{ github.repository }}
+          RC_LAKE_MODE: docker
         run: |
           set -e
           PACKET="${GITHUB_HEAD_REF#packet/}"
