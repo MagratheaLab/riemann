@@ -1,7 +1,7 @@
 # Job name `gate` must always run: riemann ruleset requires that check.
-# Delivery = CERTIFICATE.json in THIS PR's diff → rc gate --ci
+# Delivery = packet/ branch AND CERTIFICATE.json in THIS PR's diff → rc gate --ci
 # Catalog island = new .lean, no cert in the diff → lake build only
-# (do not use CERTIFICATE.json leftover on main)
+# Onboarding (docs, receipts move) never uses leftover certs from main.
 name: gate
 
 on:
@@ -32,7 +32,8 @@ jobs:
           git fetch origin "${{ github.base_ref }}" --depth=1
           CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" || true)
           echo "$CHANGED"
-          if echo "$CHANGED" | grep -Eq '(^|/)CERTIFICATE\.json$'; then
+          REF="${GITHUB_HEAD_REF}"
+          if echo "$REF" | grep -Eq '^packet/P-[0-9]{8}-[a-z0-9]+$' && echo "$CHANGED" | grep -Eq '(^|/)CERTIFICATE\.json$'; then
             echo "mode=delivery" >> "$GITHUB_OUTPUT"
           elif echo "$CHANGED" | grep -Eq '\.lean$'; then
             echo "mode=catalog" >> "$GITHUB_OUTPUT"
@@ -61,7 +62,16 @@ jobs:
           RC_REPO: ${{ github.repository }}
         run: |
           set -e
-          PACKET=$(python3 -c "import json; print(json.load(open('CERTIFICATE.json'))['packet'])")
+          PACKET="${GITHUB_HEAD_REF#packet/}"
+          if [ -f "receipts/${PACKET}/CERTIFICATE.json" ]; then
+            CERT="receipts/${PACKET}/CERTIFICATE.json"
+          elif [ -f "CERTIFICATE.json" ]; then
+            CERT="CERTIFICATE.json"
+          else
+            echo "delivery PR missing CERTIFICATE.json under receipts/${PACKET}/"
+            exit 1
+          fi
+          PACKET=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['packet'])" "$CERT")
           rc gate --ci "$PACKET"
       - name: catalog lake
         if: steps.kind.outputs.mode == 'catalog'

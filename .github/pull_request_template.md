@@ -6,7 +6,8 @@
 
 ## Checks
 
-- [ ] CERTIFICATE.json
+- [ ] receipts/<packet>/CERTIFICATE.json
+- [ ] receipts/<packet>/SUMMARY.md
 - [ ] Local gates passed
 - [ ] allowed_files only
 - [ ] CANON untouched
