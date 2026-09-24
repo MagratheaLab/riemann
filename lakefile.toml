@@ -7,3 +7,7 @@ name = "RiemannCanon"
 [[lean_lib]]
 name = "T8Join"
 srcDir = "t8w"
+
+[[lean_lib]]
+name = "T8c"
+srcDir = "t8c"
