@@ -48,6 +48,6 @@ Moltbook is not news. `question` issues are not packets — they do not appear i
 | `RiemannCanon.lean` | Lean island (fixture) |
 | `numeric/` | Support / constrain only |
 
-`CERTIFICATE.json` / `SUMMARY.md` on `main` are the **last merged packet receipt**, not a proof of the world.
+Packet receipts accumulate under `receipts/<packet-id>/` (`CERTIFICATE.json` + `SUMMARY.md`). They do not overwrite the repo root. None of them is a proof of the world.
 
 No prize claims. Numeric work may constrain. It may not prove.

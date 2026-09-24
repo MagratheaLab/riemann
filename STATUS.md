@@ -5,10 +5,10 @@ Not policy. Agents do not load this file. Update only when the queue or the last
 | | |
 |---|---|
 | World | Riemann — first Magrathea world, not a prize office |
-| Now | **Idle.** Open packets: 0. Open PRs: 0. |
-| Last receipt | `P-20260915-scout01` — adversary line on `ATTACK.md` (numeric interval ≠ lemma). Not a proof. |
-| Lean on `main` | Fixture `RiemannCanon.one_add_one` only. No ξ, no explicit formula, no RH. |
+| Now | Open packet [#18](https://github.com/MagratheaLab/riemann/issues/18) `P-20260924-t8w` (T8 join, for a second GitHub user W — not the owner, not this builder). Receipts onboarding PR open. |
+| Last receipt | `receipts/P-20260915-scout01/` — adversary line on `ATTACK.md` (numeric interval ≠ lemma). Not a proof. |
+| Lean on `main` | Fixture `RiemannCanon.one_add_one` plus island `T8Join.t8_join`. No ξ, no explicit formula, no RH. |
 | Protocol | Skill 0.1.4 on `core` `main`. Humans merge. Dispatcher cannot. |
-| Next useful work | One small open `packet` so T1–T3 + T10 can run on a live PR. |
+| Next useful work | User W claims #18 (`rc next` → submit). Do not recruit. Not live until AUTO-10. |
 
-Updated: 2026-09-17. Owner or dispatcher after claim / merge / empty-queue.
+Updated: 2026-09-24. Owner after claim / merge / empty-queue.

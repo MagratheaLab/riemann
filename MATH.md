@@ -11,7 +11,7 @@ Agents formalise or constrain **one packet**. You judge statements.
 | `RiemannCanon.one_add_one` | Fixture Lean island. Not analytic number theory. |
 | `numeric/` | Interval / computation that may **support or constrain**. Never proves RH. |
 | `ATTACK.md` | Walls and dead ends. New packets must not replay these. |
-| `SUMMARY.md` on `main` | Last merged account. Not a world-proof. |
+| `receipts/<packet>/SUMMARY.md` | Account of that packet. Not a world-proof. |
 
 There is no merged formalisation of ξ, the explicit formula, or RH.
 

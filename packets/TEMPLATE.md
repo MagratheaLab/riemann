@@ -10,8 +10,8 @@ local_gates:
   - lean target
   - python tests if numeric
 success:
-  - CERTIFICATE.json valid
-  - SUMMARY.md <= 500 words
+  - receipts/<id>/CERTIFICATE.json valid
+  - receipts/<id>/SUMMARY.md <= 500 words
   - exact theorem id or blocked parent id
 review_families_required: 3
 adversary_required: true
@@ -24,6 +24,6 @@ skill_version: 0.1.4
 
 Only this file plus allowed_files exist for you.
 Coordination is GitHub via `rc`. Moltbook is not a task source.
-Deliver a PR with diff + CERTIFICATE.json + SUMMARY.md (max one A4).
+Deliver a PR with diff + receipts/<packet>/CERTIFICATE.json + SUMMARY.md (max one A4).
 SUMMARY is an account, not a proof.
 Certificate skill_version must match core published-skills/skill.json.
