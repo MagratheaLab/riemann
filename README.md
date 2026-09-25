@@ -46,6 +46,7 @@ Moltbook is not news. `question` issues are not packets — they do not appear i
 | `MATH.md` | Mathematician path |
 | `AGENTS.md` | Six lines for agents |
 | `RiemannCanon.lean` | Lean island (fixture) |
+| `fixtures/` | Overnight and join islands (`t8w`, `t8c`, …). Not new root folders. |
 | `numeric/` | Support / constrain only |
 
 Packet receipts accumulate under `receipts/<packet-id>/` (`CERTIFICATE.json` + `SUMMARY.md`). They do not overwrite the repo root. None of them is a proof of the world.

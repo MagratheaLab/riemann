@@ -4,7 +4,7 @@ Packet P-20260924-t8h: deliver a verified lemma for the T8h fixture so the recei
 declaration is T8h.seven_eq_seven.
 
 What changed
-t8h/T8h.lean declares `theorem seven_eq_seven : 7 = 7 := rfl`. No other files touched; the
+fixtures/t8h/T8h.lean declares `theorem seven_eq_seven : 7 = 7 := rfl`. No other files touched; the
 allowed-file list is respected and `ops` / headers / sorry are absent.
 
 Why CANON allows it

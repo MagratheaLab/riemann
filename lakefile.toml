@@ -6,48 +6,48 @@ name = "RiemannCanon"
 
 [[lean_lib]]
 name = "T8Join"
-srcDir = "t8w"
+srcDir = "fixtures/t8w"
 
 [[lean_lib]]
 name = "T8c"
-srcDir = "t8c"
+srcDir = "fixtures/t8c"
 
 [[lean_lib]]
 name = "T8d"
-srcDir = "t8d"
+srcDir = "fixtures/t8d"
 
 [[lean_lib]]
 name = "T8e"
-srcDir = "t8e"
+srcDir = "fixtures/t8e"
 
 [[lean_lib]]
 name = "T8f"
-srcDir = "t8f"
+srcDir = "fixtures/t8f"
 
 [[lean_lib]]
 name = "T8g"
-srcDir = "t8g"
+srcDir = "fixtures/t8g"
 
 [[lean_lib]]
 name = "T8h"
-srcDir = "t8h"
+srcDir = "fixtures/t8h"
 
 [[lean_lib]]
 name = "T8i"
-srcDir = "t8i"
+srcDir = "fixtures/t8i"
 
 [[lean_lib]]
 name = "T8j"
-srcDir = "t8j"
+srcDir = "fixtures/t8j"
 
 [[lean_lib]]
 name = "T8k"
-srcDir = "t8k"
+srcDir = "fixtures/t8k"
 
 [[lean_lib]]
 name = "T8l"
-srcDir = "t8l"
+srcDir = "fixtures/t8l"
 
 [[lean_lib]]
 name = "T8m"
-srcDir = "t8m"
+srcDir = "fixtures/t8m"

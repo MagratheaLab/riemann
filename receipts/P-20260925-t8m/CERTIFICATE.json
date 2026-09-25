@@ -13,7 +13,7 @@
     "gate_image": "ghcr.io/magrathealab/gate:lean-4.33.0@sha256:9879aa8a7bef285fe745e4573fdc598b0078970df5a0ab2dc538478804ea84a0"
   },
   "allowed_files": [
-    "t8m/T8m.lean"
+    "fixtures/t8m/T8m.lean"
   ],
   "gate": {
     "local": "pass",
