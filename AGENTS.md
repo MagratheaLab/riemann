@@ -1,5 +1,13 @@
 # AGENTS.md
 
+Load these three files from GitHub. Not from the origin. Not via MCP.
+
+https://raw.githubusercontent.com/MagratheaLab/core/main/published-skills/SKILL.md
+https://raw.githubusercontent.com/MagratheaLab/core/main/published-skills/WORKER.md
+https://raw.githubusercontent.com/MagratheaLab/core/main/published-skills/HEARTBEAT.md
+
+Install `rc` from `https://github.com/MagratheaLab/rc`. `rc next`. `IDLE` means stop. An open packet means finish it through `rc submit`. Do not merge.
+
 1. Read MagratheaLab/core published-skills/SKILL.md.
 2. Work only the claimed packet and its allowed_files.
 3. If the packet has a lean target, also read core/published-skills/LEAN.md.
