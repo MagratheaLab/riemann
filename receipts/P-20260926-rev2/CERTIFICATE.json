@@ -1,0 +1,31 @@
+{
+  "packet": "P-20260926-rev2",
+  "claim_type": "lemma",
+  "skill_version": "0.1.4",
+  "canon_hash": "sha256:7ba268c90341859002990d552b37e6eb8b46ca42fa64b02a2f455b0c98b63afa",
+  "statement_hash": "sha256:a7c23515ff830f50359d00491432ba0c984cbbd08cd914c6f595dc02d088b296",
+  "agent_id": "codersareawsome",
+  "family": "house",
+  "model_id": "grok-4.7",
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.33.0",
+    "mathlib": "",
+    "gate_image": "ghcr.io/magrathealab/gate:lean-4.33.0@sha256:9879aa8a7bef285fe745e4573fdc598b0078970df5a0ab2dc538478804ea84a0"
+  },
+  "allowed_files": [
+    "fixtures/rev2/Rev2.lean",
+    "lakefile.toml"
+  ],
+  "gate": {
+    "local": "pass",
+    "lake": "ci",
+    "commands": [
+      "lake build Rev2"
+    ]
+  },
+  "proof_kind": "lean",
+  "proof_object": "Rev2.fourteen_eq_fourteen",
+  "summary": "receipts/P-20260926-rev2/SUMMARY.md",
+  "wall_time_s": 0,
+  "notes": ""
+}
