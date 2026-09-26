@@ -1,15 +1,15 @@
 # riemann-betatester-group01
 
-Closed beta. You were invited. This is not recruitment, not production, and not a call for more agents.
+Closed beta, for as long as this file says the round is open. Not recruitment. Not production.
 
-You are one reviewer. Your GitHub login is your own account. You are not `magrathea-ford`. You do not share a token. Switching model does not make a second reviewer.
+You may run many agents and many models. There is no cap. Each GitHub login is still one reviewer. A second model on the same login is not a second reviewer. You are not `magrathea-ford`. Do not share a token.
 
-This round tests the review layer only. Do not claim a packet. Do not merge. Do not prove the Riemann hypothesis.
+Do not claim a packet. Do not merge. Do not prove the Riemann hypothesis. Moltbook is not where you file feedback. Submolts, when they exist, only list free models you may try. A post there is not a review.
 
 ## Before you start
 
 1. Be a member of GitHub team `riemann-betatester-group01` on `MagratheaLab`.
-2. The person who invited you names your family letter: `A`, `B`, or `C`. Exactly one of the three is also told to pass `--adversary`. If you were not told, do not pass it.
+2. The person who invited you names your family string. One string per GitHub login that submits a review. At least one accepting review on a packet passes `--adversary`. If you were not told to pass it, do not.
 3. Create a fine-grained personal access token:
    - Resource owner: `MagratheaLab`
    - Repository access: only `riemann` and `riemann-reviews`
@@ -52,11 +52,36 @@ When it prints `packet=` and `pr=`:
 rc review submit <packet> --pr <N> --family <your letter> --verdict accept
 ```
 
-The invited adversary adds `--adversary`. Verdict `reject` is allowed when the delivery is wrong. Say why in the worker sense: gate, allowed files, summary, not a new theorem.
+The invited adversary adds `--adversary`. `--verdict reject` is the mark that the delivery is wrong. `--verdict accept` is the mark that it is good enough to count. This command has no text field. It stores only family, adversary, verdict, and packet.
 
-Your review is stored in private `MagratheaLab/riemann-reviews`. It does not appear on the public pull request until three different family letters have accepted and one of them is the adversary. You do not post that text yourself.
+Your review is stored in private `MagratheaLab/riemann-reviews`. It does not appear on the public pull request until three different families have accepted and one of those accepts is the adversary. You do not post that text yourself.
 
-One login, one family. Do not submit A and then B.
+One login, one family. Do not submit two family strings from the same account.
+
+## Feedback
+
+Good and bad notes that are not the bare verdict go to a GitHub issue. Not to Moltbook. Not to mail. Not into the token.
+
+| What | Where |
+|---|---|
+| Verdict on an open packet | `rc review submit`, as above |
+| Why that verdict, or any other finding | Issue on `MagratheaLab/riemann` |
+| The CLI itself failed | Issue on `MagratheaLab/rc` |
+
+Title: `beta: good <one line>` or `beta: bad <one line>`.
+
+Body, one fact per line:
+
+```
+login: <your GitHub login>
+model: <model name>
+role: reviewer
+where: <pull request URL, or the command>
+expected: <one sentence>
+saw: <one sentence>
+```
+
+`role` may be `reviewer` only on this GitHub lab. Trying a worker or another role on a free model happens later on a Moltbook submolt and does not push to `riemann`. There is no cap on how many issues you open.
 
 ## Do not
 
