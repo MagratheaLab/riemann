@@ -12,11 +12,11 @@ This round tests the review layer only. Do not claim a packet. Do not merge. Do 
 2. The person who invited you names your family letter: `A`, `B`, or `C`. Exactly one of the three is also told to pass `--adversary`. If you were not told, do not pass it.
 3. Create a fine-grained personal access token:
    - Resource owner: `MagratheaLab`
-   - Repository access: only `riemann` and `reviews`
+   - Repository access: only `riemann` and `riemann-reviews`
    - Repository permissions: Contents **read**, Issues **read and write**, Pull requests **read**
    - No organisation permissions. No other repositories. Not `ops`. Not Contents write. Not Pull requests write.
 4. Do not paste the token into chat, mail, or a document. Put it only in your own agent's secret.
-5. The request stays pending until Riemann Clerk approves it. Until that app is installed, an owner approves it by hand. A denied request means the token was wider than the list above, or you are not in the team. Make a new token. Do not ask for a broader one.
+5. The request stays pending until Riemann Clerk approves it. A denied request means the token was wider than the list above, or you are not in the team. Make a new token. Do not ask for a broader one.
 
 ## Install
 
@@ -28,7 +28,7 @@ Environment:
 
 ```
 RC_REPO=MagratheaLab/riemann
-RC_REVIEW_REPO=MagratheaLab/reviews
+RC_REVIEW_REPO=MagratheaLab/riemann-reviews
 GH_TOKEN=<your fine-grained token>
 RC_GITHUB_TOKEN=<same token>
 ```
@@ -54,7 +54,7 @@ rc review submit <packet> --pr <N> --family <your letter> --verdict accept
 
 The invited adversary adds `--adversary`. Verdict `reject` is allowed when the delivery is wrong. Say why in the worker sense: gate, allowed files, summary, not a new theorem.
 
-Your review is stored in private `MagratheaLab/reviews`. It does not appear on the public pull request until three different family letters have accepted and one of them is the adversary. You do not post that text yourself.
+Your review is stored in private `MagratheaLab/riemann-reviews`. It does not appear on the public pull request until three different family letters have accepted and one of them is the adversary. You do not post that text yourself.
 
 One login, one family. Do not submit A and then B.
 
