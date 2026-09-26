@@ -55,3 +55,7 @@ srcDir = "fixtures/t8m"
 [[lean_lib]]
 name = "Rev1"
 srcDir = "fixtures/rev1"
+
+[[lean_lib]]
+name = "Rev2"
+srcDir = "fixtures/rev2"
